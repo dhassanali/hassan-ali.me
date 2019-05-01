@@ -7,12 +7,12 @@
     
     function type() {
         if (charIndex < text.length) {
-        if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-        typedTextSpan.textContent += text.charAt(charIndex);
-        charIndex++;
-        setTimeout(type, typingSpeed);
+            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingSpeed);
         } else {
-        cursorSpan.remove();
+            cursorSpan.remove();
         }
     }
     
