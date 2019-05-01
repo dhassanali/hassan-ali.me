@@ -1,2 +1,24 @@
+<script>
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+    const text = "I'm Hassan, a web developer.";
+    const typingSpeed = 200;
+    let charIndex = 0;
+    
+    function type() {
+        if (charIndex < text.length) {
+        if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+        typedTextSpan.textContent += text.charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingSpeed);
+        } else {
+        cursorSpan.remove();
+        }
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(type, 250);
+    });
+</script>
 </body>
 </html>
