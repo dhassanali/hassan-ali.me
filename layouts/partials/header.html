@@ -3,18 +3,20 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Hassan Ali — web developer building things for the web.">
+        <meta name="description" content="Hassan Ali — web developer building for the web and fascinated by AI.">
 
         <!-- Open Graph -->
         <meta property="og:title" content="Hassan Ali">
-        <meta property="og:description" content="Web developer building things for the web.">
+        <meta property="og:description" content="Web developer building for the web and fascinated by AI.">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://hassan-ali.me/">
+        <meta property="og:image" content="https://hassan-ali.me/avatar.jpg">
 
         <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary">
+        <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Hassan Ali">
-        <meta name="twitter:description" content="Web developer building things for the web.">
+        <meta name="twitter:description" content="Web developer building for the web and fascinated by AI.">
+        <meta name="twitter:image" content="https://hassan-ali.me/avatar.jpg">
 
         <title>Hassan Ali</title>
         <link rel="canonical" href="https://hassan-ali.me/">
@@ -22,78 +24,93 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <style>
             :root {
-                --bg: #0a0a0a;
-                --text: #e8e8e8;
-                --muted: #888;
+                --bg:     #0a0a0a;
+                --surface: #111111;
+                --border: #1e1e1e;
+                --text:   #e8e8e8;
+                --muted:  #888;
                 --accent: #1da1f2;
             }
 
-            *, *::before, *::after {
-                box-sizing: border-box;
-            }
+            *, *::before, *::after { box-sizing: border-box; }
 
             html, body {
                 background-color: var(--bg);
                 color: var(--text);
-                font-family: 'Pacifico', cursive;
-                height: 100vh;
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
                 margin: 0;
-                overflow: hidden;
+                scroll-behavior: smooth;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
+            /* ── Hero ─────────────────────────────────── */
+            .hero {
+                min-height: 100svh;
                 display: flex;
+                align-items: center;
                 justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .content {
+                padding: 5rem 1.5rem 4rem;
                 text-align: center;
-                padding: 1rem;
+            }
+
+            .hero-inner {
+                max-width: 560px;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: top;
+                border: 3px solid var(--accent);
+                margin-bottom: 1.75rem;
                 opacity: 0;
-                animation: fadeUp 0.8s ease 0.2s forwards;
+                animation: fadeUp 0.8s ease 0.1s forwards;
             }
 
-            .title {
-                font-size: clamp(1.4rem, 4vw, 2.8rem);
-                margin: 0;
-                line-height: 1.4;
+            .hero-title {
+                font-family: 'Pacifico', cursive;
+                font-size: clamp(1.6rem, 5vw, 3rem);
+                margin: 0 0 0.5rem;
+                line-height: 1.3;
+                opacity: 0;
+                animation: fadeUp 0.8s ease 0.25s forwards;
             }
 
-            .tagline {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-                font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2.2vw, 1.05rem);
                 color: var(--muted);
-                margin: 0.8rem 0 0;
-                letter-spacing: 0.08em;
-                font-weight: 400;
+                margin: 0 0 1.25rem;
+                letter-spacing: 0.04em;
+                min-height: 1.6em;
+                opacity: 0;
+                animation: fadeUp 0.8s ease 0.4s forwards;
             }
 
+            .hero-bio {
+                font-size: clamp(0.875rem, 1.8vw, 0.975rem);
+                color: var(--muted);
+                line-height: 1.75;
+                margin: 0 0 2.25rem;
+                opacity: 0;
+                animation: fadeUp 0.8s ease 0.55s forwards;
+            }
+
+            /* ── Social links ─────────────────────────── */
             .links {
                 display: flex;
                 gap: 1.4rem;
                 justify-content: center;
-                margin-top: 2rem;
                 opacity: 0;
-                transition: opacity 0.6s ease;
+                transition: opacity 0.5s ease;
             }
 
-            .links.visible {
-                opacity: 1;
-            }
+            .links.visible { opacity: 1; }
 
             .links a {
                 color: var(--muted);
@@ -108,15 +125,9 @@
                 transform: translateY(-3px);
             }
 
-            .links a svg {
-                display: block;
-            }
+            .links a svg { display: block; }
 
-            ::selection {
-                background: var(--accent);
-                color: #fff;
-            }
-
+            /* ── Cursor ───────────────────────────────── */
             .cursor {
                 display: inline-block;
                 background-color: #ccc;
@@ -125,8 +136,146 @@
                 animation: blink 1s step-end infinite;
             }
 
-            .cursor.typing {
-                animation: none;
+            .cursor.typing { animation: none; }
+
+            /* ── Sections ─────────────────────────────── */
+            .section {
+                padding: 5rem 1.5rem;
+                border-top: 1px solid var(--border);
+            }
+
+            .container {
+                max-width: 880px;
+                margin: 0 auto;
+            }
+
+            .section-label {
+                font-family: 'Pacifico', cursive;
+                font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+                color: var(--accent);
+                margin: 0 0 2.5rem;
+                text-align: center;
+            }
+
+            /* ── About ────────────────────────────────── */
+            .about-text {
+                font-size: clamp(0.9rem, 1.8vw, 1rem);
+                color: var(--muted);
+                line-height: 1.85;
+                max-width: 640px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .about-text strong {
+                color: var(--text);
+                font-weight: 600;
+            }
+
+            /* ── Skills chips ─────────────────────────── */
+            .chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.6rem;
+                justify-content: center;
+                margin-top: 2rem;
+            }
+
+            .chip {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                color: var(--muted);
+                font-size: 0.78rem;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                padding: 0.35rem 0.85rem;
+                border-radius: 999px;
+            }
+
+            /* ── Projects grid ────────────────────────── */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 1.25rem;
+            }
+
+            .project-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 1.5rem;
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                transition: border-color 0.2s ease, transform 0.2s ease;
+            }
+
+            .project-card:hover {
+                border-color: var(--accent);
+                transform: translateY(-4px);
+            }
+
+            .project-name {
+                font-family: 'Pacifico', cursive;
+                font-size: 0.95rem;
+                color: var(--text);
+                margin: 0;
+            }
+
+            .project-desc {
+                font-size: 0.85rem;
+                color: var(--muted);
+                line-height: 1.6;
+                margin: 0;
+                flex: 1;
+            }
+
+            .project-meta {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                font-size: 0.78rem;
+                color: var(--muted);
+                margin-top: 0.25rem;
+            }
+
+            .lang {
+                display: flex;
+                align-items: center;
+                gap: 0.35rem;
+            }
+
+            .lang-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+
+            .lang-dot.php  { background: #4f5d95; }
+            .lang-dot.js   { background: #f1e05a; }
+            .lang-dot.ts   { background: #3178c6; }
+
+            .stars {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+            }
+
+            /* ── Site footer ──────────────────────────── */
+            .site-footer {
+                border-top: 1px solid var(--border);
+                padding: 2rem 1.5rem;
+                text-align: center;
+                font-size: 0.8rem;
+                color: var(--muted);
+            }
+
+            /* ── Utilities ────────────────────────────── */
+            ::selection {
+                background: var(--accent);
+                color: #fff;
             }
 
             @keyframes blink {
@@ -135,27 +284,18 @@
             }
 
             @keyframes fadeUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(16px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+                from { opacity: 0; transform: translateY(16px); }
+                to   { opacity: 1; transform: translateY(0); }
             }
 
             @media (prefers-reduced-motion: reduce) {
-                .content {
+                .avatar, .hero-title, .hero-subtitle, .hero-bio {
                     animation: none;
                     opacity: 1;
                 }
-                .cursor {
-                    animation: none;
-                }
-                .links {
-                    transition: none;
-                }
+                .cursor { animation: none; }
+                .links  { transition: none; }
+                html    { scroll-behavior: auto; }
             }
         </style>
 
