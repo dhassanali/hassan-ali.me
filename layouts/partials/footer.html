@@ -1,23 +1,28 @@
 <script>
     const typedTextSpan = document.querySelector(".typed-text");
-    const cursorSpan = document.querySelector(".cursor");
-    const text = "I'm Hassan, a web developer.";
-    const typingSpeed = 200;
-    let charIndex = 0;
-    
+    const cursorSpan    = document.querySelector(".cursor");
+    const linksEl       = document.querySelector(".links");
+
+    const text        = "I'm Hassan, a web developer.";
+    const typingSpeed = 90;
+    let charIndex     = 0;
+
     function type() {
         if (charIndex < text.length) {
-            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            if (!cursorSpan.classList.contains("typing")) {
+                cursorSpan.classList.add("typing");
+            }
             typedTextSpan.textContent += text.charAt(charIndex);
             charIndex++;
             setTimeout(type, typingSpeed);
         } else {
             cursorSpan.remove();
+            if (linksEl) linksEl.classList.add("visible");
         }
     }
-    
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(type, 250);
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(type, 600);
     });
 </script>
 </body>

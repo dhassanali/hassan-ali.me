@@ -3,21 +3,46 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="I'm Hassan, a web developer.">
-        
+        <meta name="description" content="Hassan Ali — web developer building things for the web.">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Hassan Ali">
+        <meta property="og:description" content="Web developer building things for the web.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://hassan-ali.me/">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Hassan Ali">
+        <meta name="twitter:description" content="Web developer building things for the web.">
+
         <title>Hassan Ali</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <style>
+            :root {
+                --bg: #0a0a0a;
+                --text: #e8e8e8;
+                --muted: #555;
+                --accent: #1da1f2;
+            }
+
+            *, *::before, *::after {
+                box-sizing: border-box;
+            }
+
             html, body {
-                background-color: #000;
-                color: #eee;
-                font-family: 'Pacifico', sans-serif;
+                background-color: var(--bg);
+                color: var(--text);
+                font-family: 'Pacifico', cursive;
                 height: 100vh;
                 margin: 0;
+                overflow: hidden;
             }
 
             .full-height {
@@ -36,49 +61,96 @@
 
             .content {
                 text-align: center;
+                padding: 1rem;
+                opacity: 0;
+                animation: fadeUp 0.8s ease 0.2s forwards;
             }
 
             .title {
-                font-size: calc(1em + 2vw);
+                font-size: clamp(1.4rem, 4vw, 2.8rem);
+                margin: 0;
+                line-height: 1.4;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
+            .tagline {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+                font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+                color: var(--muted);
+                margin: 0.8rem 0 0;
+                letter-spacing: 0.08em;
+                font-weight: 400;
+            }
+
+            .links {
+                display: flex;
+                gap: 1.4rem;
+                justify-content: center;
+                margin-top: 2rem;
+                opacity: 0;
+                transition: opacity 0.6s ease;
+            }
+
+            .links.visible {
+                opacity: 1;
+            }
+
+            .links a {
+                color: var(--muted);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                transition: color 0.2s ease, transform 0.2s ease;
+            }
+
+            .links a:hover {
+                color: var(--accent);
+                transform: translateY(-3px);
+            }
+
+            .links a svg {
+                display: block;
             }
 
             ::selection {
-                background: #1da1f2;
+                background: var(--accent);
                 color: #fff;
             }
 
-            .content span.cursor {
+            .cursor {
                 display: inline-block;
                 background-color: #ccc;
                 margin-left: 0.1rem;
                 width: 3px;
-                animation: blink 1s infinite;
+                animation: blink 1s step-end infinite;
             }
 
-            .content span.cursor.typing {
+            .cursor.typing {
                 animation: none;
             }
 
             @keyframes blink {
-                0%  { background-color: #ccc; }
-                49% { background-color: #ccc; }
-                50% { background-color: transparent; }
-                99% { background-color: transparent; }
-                100%  { background-color: #ccc; }
+                0%, 100% { background-color: #ccc; }
+                50%       { background-color: transparent; }
+            }
+
+            @keyframes fadeUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(16px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
         </style>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-83022051-2"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'UA-83022051-2');
         </script>
     </head>
