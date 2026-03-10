@@ -22,7 +22,13 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        setTimeout(type, 600);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            typedTextSpan.textContent = text;
+            cursorSpan.remove();
+            if (linksEl) linksEl.classList.add("visible");
+        } else {
+            setTimeout(type, 600);
+        }
     });
 </script>
 </body>

@@ -17,6 +17,7 @@
         <meta name="twitter:description" content="Web developer building things for the web.">
 
         <title>Hassan Ali</title>
+        <link rel="canonical" href="https://hassan-ali.me/">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +29,7 @@
             :root {
                 --bg: #0a0a0a;
                 --text: #e8e8e8;
-                --muted: #555;
+                --muted: #888;
                 --accent: #1da1f2;
             }
 
@@ -141,6 +142,19 @@
                 to {
                     opacity: 1;
                     transform: translateY(0);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .content {
+                    animation: none;
+                    opacity: 1;
+                }
+                .cursor {
+                    animation: none;
+                }
+                .links {
+                    transition: none;
                 }
             }
         </style>
