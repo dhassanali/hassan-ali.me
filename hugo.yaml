@@ -1,0 +1,8 @@
+baseURL: "https://hassan-ali.me/"
+languageCode: en-us
+title: Hassan Ali
+
+disableKinds:
+  - RSS
+  - taxonomy
+  - taxonomyTerm
